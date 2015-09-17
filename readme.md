@@ -13,8 +13,8 @@ Building of project is managed with **grunt**.
 
 ## Implemented grunt commands
 * `gulp watch` - watch scss and live compile to css.
-* `grunt clean` - remove all build results.
-* `grunt build` - build project(clean,  then compile less and js).
+* `gulp clean` - remove all build results.
+* `gulp build` - build project(clean,  then compile less and js).
 
 ## List of dependencies(npm)
 * gulp
