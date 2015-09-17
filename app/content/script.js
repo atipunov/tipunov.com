@@ -1,0 +1,1 @@
+var tipunovApp = angular.module('tipunovApp', ["ngRoute"]);
