@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" ng-app="tipunovApp" ng-controller="dashboardController">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
-    <title>Антон Типунов</title>
+    <title>{{profile.firstName}} {{profile.lastName}}</title>
     <script type="text/javascript" async="" src="//www.google-analytics.com/ga.js"></script>
     <meta content="width=device-width" name="viewport">
     <meta content="#e0e0e0" name="theme-color">
@@ -29,12 +29,10 @@
 
     </script>
 </head>
-<body class="transform-3d" ng-app="tipunovApp">
-<div class="person" itemscope="" itemtype="http://schema.org/Person" ng-controller="dashboardController">
+<body class="transform-3d" >
+<div class="person" itemscope="" itemtype="http://schema.org/Person" >
     <div class="images is-animated with-right-rotation">
-        <div class="mask">
-
-        </div>
+        <div class="mask"></div>
     </div>
     <div class="content-position">
         <div class="content">
