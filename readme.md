@@ -1,6 +1,6 @@
 #tipunov.com web site sources.
 
-Building of project is managed with **grunt**.
+Building of project is managed with **gulp**.
 
 ## How to start (*nix)
 * `git clone https://github.com/atipunov/tipunov.com.git`
