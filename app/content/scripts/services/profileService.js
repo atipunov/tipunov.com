@@ -1,6 +1,6 @@
 tipunovApp.factory('profileService', ["resources", function (resources) {
     function getProfile(lang) {
-        if (!lang) {
+        if (!lang || !resources[lang]) {
             lang = "en";
         }
         var profile = resources[lang];

@@ -1,12 +1,17 @@
-tipunovApp.controller('dashboardController', ["$scope", "profileService", function ($scope, profileService) {
-    $scope.en = function () {
-        $scope.profile = profileService.getProfile("en");
-        $scope.locale = "en";
+tipunovApp.controller('dashboardController', ["$scope", "profileService", "$routeParams", function ($scope, profileService, $routeParams) {
+    $scope.locale = $routeParams.lang;
+    var profile = profileService.getProfile($scope.locale);
+    $scope.profile = profile;
+    $scope.page.setTitle(profile.firstName + " " + profile.lastName);
+}]);
+
+tipunovApp.run(['$rootScope', function ($rootScope) {
+    $rootScope.page = {
+        setTitle: function (title) {
+            this.title = title;
+        }
     }
-    $scope.ru = function () {
-        $scope.profile = profileService.getProfile("ru");
-        $scope.locale = "ru";
-    }
-    $scope.locale = "en";
-    $scope.profile = profileService.getProfile($scope.locale);
+    $rootScope.$on('$routeChangeSuccess', function (event, current) {
+        $rootScope.page.setTitle(current.$$route.title);
+    });
 }]);
