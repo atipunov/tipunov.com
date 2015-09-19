@@ -1,9 +1,9 @@
 tipunovApp.factory('profileService', ["resources", function (resources) {
-    function getProfile(lang) {
-        if (!lang || !resources[lang]) {
-            lang = "en";
-        }
-        var profile = resources[lang];
+    var self = this;
+    self.lang = "en";
+
+    function getProfile() {
+        var profile = resources[self.lang];
         profile.social = [
             {
                 className: "github",
@@ -27,5 +27,19 @@ tipunovApp.factory('profileService', ["resources", function (resources) {
         return profile;
     };
 
-    return {getProfile: getProfile};
+
+    function setLocale(lang) {
+        if (!lang || !resources[lang]) {
+            self.lang = "en";
+            return;
+        }
+        self.lang = lang;
+    }
+
+    function getLocale(){
+        return self.lang;
+    }
+
+
+    return {getProfile: getProfile, setLocale: setLocale, getLocale: getLocale};
 }]);
