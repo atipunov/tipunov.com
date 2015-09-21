@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="tipunovApp">
+<html lang="{{locale}}" ng-app="tipunovApp" ng-controller="mainController">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
-    <title data-ng-bind="page.title"></title>
+    <title>{{title}}</title>
     <script type="text/javascript" async="" src="//www.google-analytics.com/ga.js"></script>
     <meta content="width=device-width" name="viewport">
     <meta content="#e0e0e0" name="theme-color">
@@ -14,68 +14,69 @@
     <!-- inject:ga -->
     <!-- endinject -->
 </head>
-<body ng-view>
-
+<body>
+<div class="person" itemscope="" itemtype="http://schema.org/Person">
+    <div class="images is-animated with-right-rotation">
+        <div class="mask"></div>
+    </div>
+    <div class="content-position" ng-view>
+    </div>
+    <div class="languages">
+        <a class="lang" ng-class="{'is-current': locale == 'ru'}" href="#/ru" hreflang="ru" rel="alternate">
+            <span class="text">Русский</span>
+        </a>
+        <a class="lang" ng-class="{'is-current': locale == 'en'}" href="#/en" hreflang="en" rel="alternate">
+            <span class="text">English</span>
+        </a>
+    </div>
+</div>
 <!--build:js js/main.min.js -->
 <script src="../node_modules/angular/angular.js"></script>
 <script src="../node_modules/angular-route/angular-route.js"></script>
 <script src="content/script.js"></script>
 <script src="content/scripts/constants/resources.js"></script>
-<script src="content/scripts/controllers/dashboardController.js"></script>
+<script src="content/scripts/services/notifyingService.js"></script>
 <script src="content/scripts/services/profileService.js"></script>
+<script src="content/scripts/controllers/mainController.js"></script>
+<script src="content/scripts/controllers/dashboardController.js"></script>
 <script src="content/scripts/directives/social.js"></script>
 <!-- endbuild -->
 <script type="text/ng-template" id="/main.html">
-    <div class="person" itemscope="" itemtype="http://schema.org/Person">
-        <div class="images is-animated with-right-rotation">
-            <div class="mask"></div>
-        </div>
-        <div class="content-position">
-            <div class="content">
-                <h1 class="name">
-                    <span itemprop="givenName">{{profile.firstName}}</span>
-                    <span itemprop="familyName">{{profile.lastName}}</span>
-                </h1>
-                <ul class="contacts list">
-                    <li class="piece email">
-                        <a class="link" href="mailto:anton@tipunov.com">
-                            <div class="icon"></div>
-                            <div class="label">{{profile.email.label}}</div>
-                            <div class="value" itemprop="email">{{profile.email.value}}</div>
-                        </a>
-                    </li>
-                    <li class="piece location">
-                        <a class="link" href="https://maps.google.com/maps?q=Belarus,+Minsk">
-                            <div class="icon"></div>
-                            <div class="label">{{profile.location.label}}</div>
-                            <div class="value" itemprop="address" itemscope=""
-                                 itemtype="http://schema.org/PostalAddress">
-                                <span itemprop="addressLocality">{{profile.location.value.locality}}</span>,
-                                <div itemprop="addressCountry">{{profile.location.value.country}}</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="piece phone">
-                        <a class="link" href="tel:+375259419001">
-                            <div class="icon"></div>
-                            <div class="label">{{profile.phone.label}}</div>
-                            <div class="value" itemprop="telephone">{{profile.phone.value}}</div>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="links list">
-                    <social ng-repeat="social in profile.social"></social>
-                </ul>
-            </div>
-        </div>
-        <div class="languages">
-            <a class="lang" ng-class="{'is-current': locale == 'ru'}" href="#/ru" hreflang="ru" rel="alternate">
-                <span class="text">Русский</span>
-            </a>
-            <a class="lang" ng-class="{'is-current': locale == 'en'}" href="#/en" hreflang="en" rel="alternate">
-                <span class="text">English</span>
-            </a>
-        </div>
+    <div class="content">
+        <h1 class="name">
+            <span itemprop="givenName">{{profile.firstName}}</span>
+            <span itemprop="familyName">{{profile.lastName}}</span>
+        </h1>
+        <ul class="contacts list">
+            <li class="piece email">
+                <a class="link" href="mailto:anton@tipunov.com">
+                    <div class="icon"></div>
+                    <div class="label">{{profile.email.label}}</div>
+                    <div class="value" itemprop="email">{{profile.email.value}}</div>
+                </a>
+            </li>
+            <li class="piece location">
+                <a class="link" href="https://maps.google.com/maps?q=Belarus,+Minsk">
+                    <div class="icon"></div>
+                    <div class="label">{{profile.location.label}}</div>
+                    <div class="value" itemprop="address" itemscope=""
+                         itemtype="http://schema.org/PostalAddress">
+                        <span itemprop="addressLocality">{{profile.location.value.locality}}</span>,
+                        <div itemprop="addressCountry">{{profile.location.value.country}}</div>
+                    </div>
+                </a>
+            </li>
+            <li class="piece phone">
+                <a class="link" href="tel:+375259419001">
+                    <div class="icon"></div>
+                    <div class="label">{{profile.phone.label}}</div>
+                    <div class="value" itemprop="telephone">{{profile.phone.value}}</div>
+                </a>
+            </li>
+        </ul>
+        <ul class="links list">
+            <social ng-repeat="social in profile.social"></social>
+        </ul>
     </div>
 </script>
 </body>
