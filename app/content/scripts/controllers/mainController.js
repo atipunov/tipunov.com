@@ -1,4 +1,4 @@
-tipunovApp.controller('mainController', ["$scope", "profileService", "notifyingService",
+angular.module('tipunovApp').controller('mainController', ["$scope", "profileService", "notifyingService",
     function ($scope, profileService, notifyingService) {
         var scope = $scope;
         notifyingService.subscribeLocaleChanged($scope, function somethingChanged(event) {

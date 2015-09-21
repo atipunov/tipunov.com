@@ -1,4 +1,4 @@
-tipunovApp.factory('profileService', ["resources", "notifyingService",
+angular.module('tipunovApp').factory('profileService', ["resources", "notifyingService",
     function (resources, notifyingService) {
         var self = this;
         self.lang = "en";

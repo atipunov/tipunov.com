@@ -1,4 +1,4 @@
-tipunovApp.constant("resources", {
+angular.module('tipunovApp').constant("resources", {
     en: {
         firstName: "Anton",
         lastName: "Tipunov",
