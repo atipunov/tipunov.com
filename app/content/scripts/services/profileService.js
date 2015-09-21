@@ -1,10 +1,10 @@
-angular.module('tipunovApp').factory('profileService', ["resources", "notifyingService",
-    function (resources, notifyingService) {
+angular.module('tipunovApp').factory('profileService', ["resources",
+    function (resources) {
         var self = this;
-        self.lang = "en";
+        self.innerStorage = {lang: "en"};
 
         function getProfile() {
-            var profile = resources[self.lang];
+            var profile = resources[self.innerStorage.lang];
             profile.social = [
                 {
                     className: "github",
@@ -28,22 +28,20 @@ angular.module('tipunovApp').factory('profileService', ["resources", "notifyingS
             return profile;
         };
 
-
         function setLocale(lang) {
             if (!lang || !resources[lang]) {
-                self.lang = "en";
+                self.innerStorage.lang = "en";
                 return;
             }
-            self.lang = lang;
-            notifyingService.notify();
+            self.innerStorage.lang = lang;
         }
 
         function getLocale() {
-            return self.lang;
+            return self.innerStorage.lang;
         }
 
         function getHeadTitle() {
-            var profile = resources[self.lang];
+            var profile = resources[self.innerStorage.lang];
 
             return profile.firstName + " " + profile.lastName;
         }
@@ -53,6 +51,7 @@ angular.module('tipunovApp').factory('profileService', ["resources", "notifyingS
             getProfile: getProfile,
             setLocale: setLocale,
             getLocale: getLocale,
-            getHeadTitle: getHeadTitle
+            getHeadTitle: getHeadTitle,
+            lang: self.innerStorage
         };
     }]);

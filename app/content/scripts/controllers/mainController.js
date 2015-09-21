@@ -1,8 +1,10 @@
-angular.module('tipunovApp').controller('mainController', ["$scope", "profileService", "notifyingService",
-    function ($scope, profileService, notifyingService) {
+angular.module('tipunovApp').controller('mainController', ["$scope", "profileService",
+    function ($scope, profileService) {
         var scope = $scope;
-        notifyingService.subscribeLocaleChanged($scope, function somethingChanged(event) {
-            scope.title = profileService.getHeadTitle();
-            scope.locale = profileService.getLocale();
+        $scope.locale = profileService.lang;
+        $scope.$watch(function () {
+            return profileService.getHeadTitle();
+        }, function (newVal, oldVal) {
+            scope.title = newVal;
         });
     }]);

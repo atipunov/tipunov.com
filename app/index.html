@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{locale}}" ng-app="tipunovApp" ng-controller="mainController">
+<html lang="{{locale.lang}}" ng-app="tipunovApp" ng-controller="mainController">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
@@ -22,10 +22,10 @@
     <div class="content-position" ng-view>
     </div>
     <div class="languages">
-        <a class="lang" ng-class="{'is-current': locale == 'ru'}" href="#/ru" hreflang="ru" rel="alternate">
+        <a class="lang" ng-class="{'is-current': locale.lang == 'ru'}" href="#/ru" hreflang="ru" rel="alternate">
             <span class="text">Русский</span>
         </a>
-        <a class="lang" ng-class="{'is-current': locale == 'en'}" href="#/en" hreflang="en" rel="alternate">
+        <a class="lang" ng-class="{'is-current': locale.lang == 'en'}" href="#/en" hreflang="en" rel="alternate">
             <span class="text">English</span>
         </a>
     </div>
@@ -35,7 +35,6 @@
 <script src="../node_modules/angular-route/angular-route.js"></script>
 <script src="content/scripts/script.js"></script>
 <script src="content/scripts/constants/resources.js"></script>
-<script src="content/scripts/services/notifyingService.js"></script>
 <script src="content/scripts/services/profileService.js"></script>
 <script src="content/scripts/controllers/mainController.js"></script>
 <script src="content/scripts/controllers/dashboardController.js"></script>
