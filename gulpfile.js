@@ -9,19 +9,19 @@ var del = require('del');
 var inject = require('gulp-inject');
 var htmlMin = require('gulp-htmlmin');
 
-gulp.task('sass', function() {
+gulp.task('sass', function () {
     return gulp.src('app/content/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
         .pipe(sass())
         .pipe(gulp.dest('app/content/css'))
 });
 
-gulp.task('watch', function(){
+gulp.task('watch', function () {
     gulp.watch('app/content/scss/**/*.scss', ['sass']);
 });
-gulp.task('clean', function() {
-    del('dist');
+gulp.task('clean', function () {
+    del(['dist']);
 });
-gulp.task('build', ['clean', 'sass'], function(){
+gulp.task('build', ['clean', 'sass'], function () {
     var assets = useref.assets();
 
     return gulp.src('app/*.html')
@@ -41,4 +41,3 @@ gulp.task('build', ['clean', 'sass'], function(){
         .pipe(gulpIf('*.html', htmlMin({collapseWhitespace: true})))
         .pipe(gulp.dest('dist'));
 });
-
